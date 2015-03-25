@@ -1,0 +1,30 @@
+1. What does O(n) mean? O(n^2)?
+
+O(n) is the big O notation for a linear algorithm.  It describes the runtime of a particular algorithm and its growth in runtime as the number of items the algorithm is processing grows.  With O(n), the runtime scales linearly.  For example, if processing 100 items took 1 minute, it would be expected that 1000 items would take 10 minutes to process.
+
+O(n^2) on the other hand grows quadratically.  This can become problematic as the number of items grows.  For example, if processing 100 items took 1 minute, processing 1000 items would take 100 minutes to process with an O(n^2) algorithm.  The runtime would increase 100x even though the number of items only increased 10x.
+
+
+2. Describe the quick sort algorithm.
+
+The quick sort algorithm is a popular sorting algorithm for two reasons.  It has a O(nlogn) runtime in the average case, which is the fastest comparison-type sorting runtime possible.  It also does not require additional memory like merge sort.
+
+The algorithm employs a divide-and-conquer strategy.  First, it picks an arbitrary pivot value and then sorts all the other values around this pivot value.  Items of lesser value go before the pivot value and items of greater value go after the pivot value.  At this point, the pivot value is in its correct sorted position.  Then the same strategy is employed on the lesser values and then once again on the greater values.  Each time this strategy is employed the pivot value is placed in the correct position and the set of values being considered shrinks until it becomes just two values, which can be sorted fairly arbitrarily.
+
+
+3. In C, what is a pointer?
+
+A pointer in C is a variable that contains an address in memory.  Pointers can be used in a variety of ways.  Usually this address in memory contains a data structure of some sort that could have been allocated dynamically.  Pointers can also be passed as arguments into functions.  In that case, the actual data you wish to be accessed by the function is passed in by reference rather than copied in its entirety.  This can be particularly useful when you don’t know how much memory to actually allocate for the arguments.  You can just pass in a pointer that points to the heap space where the memory is allocated dynamically.
+
+
+4. What is the difference between Stack and Heap memory?
+
+The Stack memory is where function frames are stored along with any local temporary variables may be stored.  As functions are called, function frames and variables of known size are placed into the stack.  As functions return, the frames and variables are popped off the stack in a first in last out order.  This memory is managed automatically as functions get called and returned.
+
+The Heap memory on the other hand is not automatically managed.  It is usually designated for larger data structures that may be allocated dynamically.  Creating data in the heap space requires an explicit command to allocate space and then bind the address of the space to a pointer.  Likewise, this space has to be explicitly freed.  Unlike the stack, the heap space can be accessible globally.
+
+
+5. What is the purpose of a garbage collector?
+
+The garbage collector is a process that determines what objects in memory are no longer in use and deallocates that memory so it can be re-used.  Unlike C and its heap space, systems and languages that use a garbage collector do not have to explicitly free objects from memory.  This can prevent memory leaks.  However, since garbage collection is an additional process, it can cause the performance of the system to be uneven depending on when and how often the garbage collection runs.
+
