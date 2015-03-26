@@ -39,7 +39,7 @@ I didn't define very many classes or custom data structures.  I maybe could have
 
 I could have also defined a Coordinate class or used a hash with :x and :y symbols (e.g. { x: 1, y: 4 }) instead of using an array of [x, y] or separate values in methods like fill().  It might increase readability especially we anticipate that kind of data structure being used in future methods.  However I felt with its limited use, the extraneous syntax would have created more clutter than helped.
 
-Additionally, I could have defined a static method to construct a SudokuBoard from a csv string.  I chose not to because I was able to validate and process the csv at the same time.  This couples the two functions together, but it's not too complex and probably more efficient.  I think that creating a validator class could be handy, though, especially if we wanted the validation functionality to be more robust and used in other programs and purposes.
+Additionally, I could have defined a static method to construct a SudokuBoard from a csv string.  I chose not to because I was able to validate and process the csv at the same time.  This couples the two functions together, but it's not too complex and probably more efficient.  I think that creating a validator class could be handy, though, especially if we wanted the validation functionality to be more robust and used in other programs and purposes.  Separating out these functionalities into classes would also allow me to write tests more easily.
 
 Finally, as I mentioned earlier, the ad-hoc tests I made are very rough.  The output is not very helpful and can't really be used for continuous integration.  I would look into using an established testing framework and also increase the test coverage.
 
