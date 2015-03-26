@@ -13,6 +13,7 @@ class SudokuSolver
     return board if x.nil? # No missing values means it's already solved
 
     possible_values = board.possible_values_for_coordinates x, y
+
     possible_values.each do |possible_value|
       # See if we can solve with this possible_value.
       board.fill(x, y, possible_value)

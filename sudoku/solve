@@ -1,0 +1,47 @@
+#!/usr/bin/ruby
+
+require_relative('classes/sudoku_board.rb')
+require_relative('classes/sudoku_solver.rb')
+
+grid = []
+$stdin.each_line do |line|
+  row = line.strip.split(',')
+
+  # Only allow valid values, 1-9 and -.  Also change - into nil values.
+  row.map! do |value|
+    if (1..9).to_a.include? value.to_i
+      value.to_i
+    elsif value == '-'
+      nil
+    else
+      raise ArgumentError.new("Invalid character: #{value} was detected.  Valid characters include 1-9 and -")
+    end
+  end
+
+  if row.size != 9
+    raise ArgumentError.new("Sudoku rows need to have exactly 9 values")
+  end
+
+  grid << row
+
+  if grid.size > 9
+    raise ArgumentError.new("Sudoku puzzles cannot have more than 9 rows")
+  end
+end
+
+if grid.size < 9
+  raise ArgumentError.new("Sudoku puzzles have to have exactly 9 rows")
+end
+
+board = SudokuBoard.new grid
+solver = SudokuSolver.new board
+solution = solver.solve
+
+if solution.nil?
+  puts "No solution was found."
+else
+  puts solution
+end
+
+
+

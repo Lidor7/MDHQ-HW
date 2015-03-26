@@ -39,3 +39,5 @@ solution = [
 solver = SudokuSolver.new(sb)
 
 assert_equals solution, solver.solve.grid
+
+puts "No assertions failed.  All tests passed!"
