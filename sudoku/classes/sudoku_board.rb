@@ -7,10 +7,6 @@ class SudokuBoard
     self.filled_coordinates = []
   end 
 
-  def self.from_csv csv
-
-  end
-
   def fill x, y, value
     grid[x][y] = value
     filled_coordinates << [x, y]
@@ -52,18 +48,6 @@ class SudokuBoard
     values.compact
   end 
 
-  def get_missing_row_values x
-    (1..9).to_a - get_row_values(x)
-  end 
-
-  def get_missing_column_values y
-    (1..9).to_a - get_column_values(y)
-  end 
-
-  def get_missing_sector_values x, y
-    (1..9).to_a - get_sector_values(x, y)
-  end 
-
   def get_first_missing_value_coordinates
     grid.each_with_index do |row, x|
       row.each_with_index do |value, y|
@@ -72,14 +56,6 @@ class SudokuBoard
     end
 
     return nil
-  end
-
-  def possible_values_for_coordinates x, y
-    possible_x_values = get_missing_row_values x
-    possible_y_values = get_missing_column_values y
-    possible_sector_values = get_missing_sector_values x, y
-
-    possible_x_values & possible_y_values & possible_sector_values
   end
 
   def to_s
